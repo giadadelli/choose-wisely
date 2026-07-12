@@ -18,6 +18,9 @@ logs
 .fleet
 .idea
 
+# Claude Code isolated agent worktrees
+.claude/worktrees/
+
 # Local env files
 .env
 .env.*

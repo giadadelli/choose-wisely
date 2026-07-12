@@ -1,6 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+  modules: ['@nuxt/eslint'],
   devtools: { enabled: true },
-  css: ['~/assets/css/tokens.css']
+  compatibilityDate: '2025-07-15',
+  css: ['~/assets/css/tokens.css'],
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+  },
 })
