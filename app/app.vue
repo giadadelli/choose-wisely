@@ -1,4 +1,6 @@
 <script setup lang="ts">
+useOrganizationJsonLd()
+
 const site = useSiteConfig()
 const defaultDescription
   = 'Choose Wisely è la directory che ti aiuta a trovare la professionista giusta per il tuo problema specifico.'
