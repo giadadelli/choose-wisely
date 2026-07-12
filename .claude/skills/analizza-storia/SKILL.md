@@ -16,7 +16,9 @@ Segui le fasi in ordine. Non saltarne una per "risparmiare tempo": ogni fase pro
 3. Leggi la issue per intero con `mcp__jira__getJiraIssue` (`fields: ["*all"]`, includi i commenti). Leggi anche:
    - la issue padre (epic), se presente
    - le issue collegate (`issuelinks`), specialmente quelle "is blocked by" — il loro stato incide sulla fattibilità del lavoro ora
-4. Se la issue o l'epic citano un documento di riferimento (es. un `.md` nel repo, un link Confluence, un file di design), cercalo nel repo (`grep`/`find` su tutti i branch, non solo quello corrente) e, se non trovato, prova `mcp__jira__searchConfluenceUsingCql`. Se manca del tutto, è un gap da segnalare in Fase 1, non un blocco silenzioso.
+4. Se la issue o l'epic citano un documento di riferimento (es. un `.md` nel repo, un link Confluence, un file di design), cercalo prima nel branch corrente (`grep`/`find`). Se non lo trovi e vuoi controllare se esiste su altri branch, usa comandi che non toccano la working directory (es. `git log --all --oneline -- '*nome-file*'`, `git ls-tree -r --name-only <branch>`, `git show <branch>:<path>`) — **mai `git checkout`/`git switch` per esplorare**: se questa skill gira in un agent che condivide la working directory con altri processi (es. un'esecuzione parallela su un'altra storia), cambiare branch la sposta sotto i piedi di chiunque altro la stia usando. Se non trovato nemmeno così, prova `mcp__jira__searchConfluenceUsingCql`. Se manca del tutto, è un gap da segnalare in Fase 1, non un blocco silenzioso.
+
+**Nota su esecuzione parallela**: se questa skill viene eseguita da un subagent (es. per analizzare più storie insieme), il subagent non ha accesso a `AskUserQuestion` — la Fase 1 e i gate di approvazione (Fasi 2 e 4) richiedono un'interazione dal vivo con l'utente che un subagent in background non può fare. In quel caso la parte di raccolta/analisi (Fasi 0-1) può essere delegata a subagent isolati (`isolation: "worktree"` se toccano git, altrimenti va bene anche senza), ma i gate di approvazione vanno gestiti dall'agente principale nella conversazione, non dal subagent.
 
 ## Fase 1 — Analisi e gap-finding
 
@@ -32,7 +34,7 @@ Se emergono ambiguità o mancanze, fermati e usa `AskUserQuestion` (o domande di
 
 ## Fase 2 — Criteri di accettazione
 
-Scrivi una checklist di criteri di accettazione chiari e verificabili (non vaghi: ognuno deve poter essere marcato vero/falso osservando il comportamento del sistema, non l'intenzione). Presentala in chat come testo, non ancora su Jira. Itera con l'utente finché non approva esplicitamente ("ok", "va bene", "approvato" o equivalente) — un silenzio o una richiesta di modifica non contano come approvazione.
+Scrivi una checklist di criteri di accettazione chiari e verificabili (non vaghi: ognuno deve poter essere marcato vero/falso osservando il comportamento del sistema, non l'intenzione). La checklist deve includere sempre almeno un criterio esplicito di **test manuale**: cosa deve controllare personalmente l'utente (es. resa visiva, esperienza su mobile reale, integrazione con l'editor) che un agente non può verificare da codice/comandi. Presentala in chat come testo, non ancora su Jira. Itera con l'utente finché non approva esplicitamente ("ok", "va bene", "approvato" o equivalente) — un silenzio o una richiesta di modifica non contano come approvazione.
 
 ## Fase 3 — Scrittura dei criteri su Jira
 
