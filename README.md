@@ -73,3 +73,28 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## CI/CD
+
+Ogni pull request verso `develop` o `main` esegue il workflow [`.github/workflows/ci.yml`](.github/workflows/ci.yml):
+
+1. `npm ci`
+2. `npm run lint` (ESLint)
+3. `npm run lint:style` (Stylelint)
+4. `npm run typecheck` (`nuxt typecheck`)
+5. `npm run build`
+6. Lighthouse CI ([`.lighthouserc.json`](.lighthouserc.json)): builda l'app, la serve in locale con `node .output/server/index.mjs` e audita `/design-system` (l'unica pagina con contenuto reale in questa fase del progetto). La build fallisce se uno dei punteggi performance/accessibilità/best practices/SEO scende sotto 90.
+
+   Nota: al momento di scrivere questo workflow, `/design-system` non supera ancora le soglie di accessibilità e SEO (manca `<title>`, `lang` su `<html>` e meta description) — questi aspetti sono responsabilità delle storie dedicate SCRUM-7 (accessibilità) e SCRUM-8 (SEO), non di questo task. Una volta che quelle storie saranno mergiate il gate dovrebbe tornare verde; se ciò non accade, verificare i report generati dallo step Lighthouse CI nei log della action.
+
+### Hosting (Vercel) — passi manuali del reporter
+
+L'hosting scelto è [Vercel](https://vercel.com) (piano free/Hobby). La configurazione lato codice è zero-config (Vercel riconosce automaticamente Nuxt/Nitro), quindi non è richiesto alcun `vercel.json`. I seguenti passi **non sono automatizzabili da codice** e restano a carico del reporter, direttamente nella dashboard Vercel:
+
+1. Creare un progetto su [vercel.com](https://vercel.com) e collegarlo al repo GitHub `giadadelli/choose-wisely`.
+2. Nelle impostazioni del progetto, impostare `main` come Production Branch.
+3. Assegnare un dominio/sottodominio stabile al branch `develop` (per farlo fungere da ambiente di staging persistente, invece delle sole preview effimere per-PR).
+4. Configurare le variabili d'ambiente su Vercel (es. `NUXT_PUBLIC_SITE_URL`).
+5. **Più avanti**, quando il sito sarà pronto per andare live (fuori scope in questo task): aggiornare i DNS di `choosewisely.it` per puntare a Vercel al posto del sito WordPress attuale a cui è collegato oggi.
+
+I punti 1-4 sono necessari perché le preview automatiche sulle PR e il deploy di produzione funzionino; il punto 5 resta rimandato a quando si deciderà di sostituire il sito WordPress esistente.
