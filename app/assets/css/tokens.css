@@ -1,0 +1,109 @@
+/**
+ * Design tokens — Choose Wisely
+ *
+ * Fonte di verità: flussi-utente-e-task.md §0.1 (palette colori).
+ * Nessun colore qui sotto deve essere aggiunto/modificato senza aggiornare
+ * anche quella sezione (contrasti verificati WCAG 2.1 AA >= 4.5:1 su testo normale).
+ *
+ * Nota tecnica sui breakpoint: le custom properties non possono essere usate
+ * dentro le condizioni di una @media query (limite nativo del CSS, niente
+ * var() nei media feature). I valori sono quindi documentati qui come
+ * riferimento e vanno usati come letterali nei singoli componenti/pagine:
+ *   sm: 640px | md: 768px | lg: 1024px | xl: 1280px
+ * Esempio: @media (min-width: 768px) { ... }
+ */
+
+:root {
+  /* Colori — primario terracotta */
+  --color-primary-50: #fdf3ee;
+  --color-primary-100: #fae4d8;
+  --color-primary-300: #f0b490;
+  --color-primary-500: #c1622d;
+  --color-primary-600: #a84f26;
+  --color-primary-700: #8a3f1d;
+  --color-primary-900: #4a2410;
+
+  /* Colori — secondario salvia */
+  --color-secondary-50: #eef3f0;
+  --color-secondary-100: #dce7e0;
+  --color-secondary-300: #9fb8a9;
+  --color-secondary-500: #4b6c5b;
+  --color-secondary-700: #35493d;
+  --color-secondary-900: #1d281f;
+
+  /* Colori — neutri caldi */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f7f5f0;
+  --color-neutral-100: #f1efe8;
+  --color-neutral-300: #d3d1c7;
+  --color-neutral-500: #b4b2a9;
+  --color-neutral-700: #5f5e5a;
+  --color-neutral-900: #2c2c2a;
+
+  /* Colori — stati semantici */
+  --color-success-bg: #e9f5ee;
+  --color-success-text: #2e7d4f;
+  --color-warning-bg: #fdf0d9;
+  --color-warning-text: #8a5a00;
+  --color-error-bg: #fbeae9;
+  --color-error-text: #b3261e;
+
+  /* Spacing — scala 4px */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Tipografia */
+  --font-family-base:
+    system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --font-size-body: 1rem; /* 16px */
+  --line-height-body: 1.5;
+
+  --font-size-h1: 2rem; /* 32px */
+  --line-height-h1: 1.2;
+
+  --font-size-h2: 1.5rem; /* 24px */
+  --line-height-h2: 1.25;
+
+  --font-size-h3: 1.25rem; /* 20px */
+  --line-height-h3: 1.35;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-neutral-50);
+  color: var(--color-neutral-900);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-family-base);
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+}

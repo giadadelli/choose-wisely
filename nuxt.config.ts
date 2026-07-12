@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   modules: ['@nuxt/eslint'],
   devtools: { enabled: true },
+  css: ['~/assets/css/tokens.css'],
   compatibilityDate: '2025-07-15',
   eslint: {
     config: {
