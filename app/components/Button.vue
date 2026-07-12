@@ -1,19 +1,12 @@
-<script setup>
-defineProps({
-  variant: {
-    type: String,
-    default: 'primary',
-    validator: (value) => ['primary', 'secondary', 'outline'].includes(value)
-  },
-  type: {
-    type: String,
-    default: 'button',
-    validator: (value) => ['button', 'submit', 'reset'].includes(value)
-  },
-  disabled: {
-    type: Boolean,
-    default: false
-  }
+<script setup lang="ts">
+withDefaults(defineProps<{
+  variant?: 'primary' | 'secondary' | 'outline'
+  type?: 'button' | 'submit' | 'reset'
+  disabled?: boolean
+}>(), {
+  variant: 'primary',
+  type: 'button',
+  disabled: false,
 })
 </script>
 

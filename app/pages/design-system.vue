@@ -19,7 +19,7 @@ const colorSwatches = [
   { label: 'neutral-900', bg: 'var(--color-neutral-900)', text: 'var(--color-neutral-0)' },
   { label: 'success', bg: 'var(--color-success-bg)', text: 'var(--color-success-text)' },
   { label: 'attenzione', bg: 'var(--color-warning-bg)', text: 'var(--color-warning-text)' },
-  { label: 'errore', bg: 'var(--color-error-bg)', text: 'var(--color-error-text)' }
+  { label: 'errore', bg: 'var(--color-error-bg)', text: 'var(--color-error-text)' },
 ]
 </script>
 
@@ -61,10 +61,21 @@ const colorSwatches = [
     <section class="design-system__section">
       <h2>Button</h2>
       <div class="row">
-        <Button variant="primary">Primario</Button>
-        <Button variant="secondary">Secondario</Button>
-        <Button variant="outline">Outline</Button>
-        <Button variant="primary" disabled>Disabilitato</Button>
+        <Button variant="primary">
+          Primario
+        </Button>
+        <Button variant="secondary">
+          Secondario
+        </Button>
+        <Button variant="outline">
+          Outline
+        </Button>
+        <Button
+          variant="primary"
+          disabled
+        >
+          Disabilitato
+        </Button>
       </div>
     </section>
 

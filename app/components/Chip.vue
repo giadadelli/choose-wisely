@@ -1,12 +1,13 @@
-<script setup>
-defineProps({
-  selected: {
-    type: Boolean,
-    default: false
-  }
+<script setup lang="ts">
+withDefaults(defineProps<{
+  selected?: boolean
+}>(), {
+  selected: false,
 })
 
-defineEmits(['click'])
+defineEmits<{
+  click: [event: MouseEvent]
+}>()
 </script>
 
 <template>
