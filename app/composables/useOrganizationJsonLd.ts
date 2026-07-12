@@ -10,15 +10,15 @@ export interface OrganizationJsonLdData {
  * (`app.vue`), cosi' che compaia su ogni pagina del sito.
  */
 export const useOrganizationJsonLd = (overrides: OrganizationJsonLdData = {}) => {
-  const config = useRuntimeConfig()
-  const siteUrl = overrides.url ?? config.public.siteUrl
+  const site = useSiteConfig()
+  const siteUrl = overrides.url ?? site.url
 
   useHead({
     script: [
       buildJsonLdScriptTag({
         '@context': 'https://schema.org',
         '@type': 'Organization',
-        'name': overrides.name ?? 'Choose Wisely',
+        'name': overrides.name ?? site.name ?? 'Choose Wisely',
         'url': siteUrl,
         // Placeholder: non esiste ancora un logo reale, sara' sostituito
         // quando sara' disponibile un asset definitivo.
