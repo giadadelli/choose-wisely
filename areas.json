@@ -1,0 +1,365 @@
+{
+  "macro_aree": [
+    {
+      "slug": "salute",
+      "nome": "Salute",
+      "hook": "Mi sento così → cerco aiuto qui",
+      "descrizione_breve": "Prenditi cura del corpo, dell'energia e dell'equilibrio ormonale.",
+      "sotto_aree": [
+        {
+          "codice": "SAL-01",
+          "slug": "ciclo-doloroso-irregolare",
+          "nome": "Ciclo doloroso o irregolare",
+          "keywords": [
+            "ciclo doloroso",
+            "dolori mestruali",
+            "dolore mestruale",
+            "crampi mestruali",
+            "mal di pancia da ciclo",
+            "dismenorrea",
+            "mestruazioni dolorose",
+            "ciclo irregolare",
+            "ciclo che salta",
+            "mestruazioni irregolari"
+          ]
+        },
+        {
+          "codice": "SAL-02",
+          "slug": "premenopausa-menopausa",
+          "nome": "Premenopausa e menopausa",
+          "keywords": [
+            "premenopausa",
+            "perimenopausa",
+            "menopausa",
+            "vampate di calore",
+            "cambiamenti ormonali",
+            "menopausa precoce",
+            "sintomi della menopausa"
+          ]
+        },
+        {
+          "codice": "SAL-03",
+          "slug": "stanchezza-cronica-calo-energia",
+          "nome": "Stanchezza cronica e calo di energia",
+          "keywords": [
+            "stanchezza cronica",
+            "calo di energia",
+            "spossatezza",
+            "sono sempre stanca",
+            "mancanza di energia",
+            "affaticamento cronico"
+          ]
+        },
+        {
+          "codice": "SAL-04",
+          "slug": "stress-burnout",
+          "nome": "Stress e burnout",
+          "keywords": [
+            "stress",
+            "burnout",
+            "sovraccarico mentale",
+            "stress da lavoro",
+            "esaurimento",
+            "troppo stress"
+          ]
+        },
+        {
+          "codice": "SAL-05",
+          "slug": "ansia-sbalzi-umore",
+          "nome": "Ansia e sbalzi d'umore",
+          "keywords": [
+            "ansia",
+            "sbalzi d'umore",
+            "irritabilità",
+            "attacchi di ansia",
+            "umore instabile",
+            "ansia femminile"
+          ]
+        },
+        {
+          "codice": "SAL-06",
+          "slug": "difficolta-dormire",
+          "nome": "Difficoltà a dormire",
+          "keywords": [
+            "insonnia",
+            "non riesco a dormire",
+            "difficoltà ad addormentarsi",
+            "disturbi del sonno",
+            "sonno agitato"
+          ]
+        },
+        {
+          "codice": "SAL-07",
+          "slug": "mal-di-schiena-cervicale",
+          "nome": "Mal di schiena e cervicale",
+          "keywords": [
+            "mal di schiena",
+            "cervicale",
+            "dolore lombare",
+            "torcicollo",
+            "dolore alla schiena",
+            "cervicalgia"
+          ]
+        },
+        {
+          "codice": "SAL-08",
+          "slug": "dolori-articolari",
+          "nome": "Dolori articolari",
+          "keywords": [
+            "dolori articolari",
+            "dolori alle articolazioni",
+            "artralgia",
+            "dolori muscolari",
+            "rigidità articolare"
+          ]
+        },
+        {
+          "codice": "SAL-09",
+          "slug": "gonfiore-digestione-difficile",
+          "nome": "Gonfiore e digestione difficile",
+          "keywords": [
+            "gonfiore addominale",
+            "pancia gonfia",
+            "digestione lenta",
+            "difficoltà digestive",
+            "meteorismo",
+            "gonfiore di pancia"
+          ]
+        },
+        {
+          "codice": "SAL-10",
+          "slug": "aumento-peso-dopo-35",
+          "nome": "Aumento di peso dopo i 35",
+          "keywords": [
+            "aumento di peso",
+            "non riesco a dimagrire",
+            "metabolismo lento",
+            "peso dopo i 35",
+            "grasso addominale"
+          ]
+        },
+        {
+          "codice": "SAL-11",
+          "slug": "fame-nervosa",
+          "nome": "Fame nervosa",
+          "keywords": [
+            "fame nervosa",
+            "fame emotiva",
+            "alimentazione emotiva",
+            "voglia di dolci",
+            "mangiare per lo stress"
+          ]
+        },
+        {
+          "codice": "SAL-12",
+          "slug": "gambe-gonfie-circolazione-lenta",
+          "nome": "Gambe gonfie e circolazione lenta",
+          "keywords": [
+            "gambe gonfie",
+            "circolazione lenta",
+            "gambe pesanti",
+            "ritenzione idrica",
+            "cattiva circolazione"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "casa",
+      "nome": "Casa",
+      "hook": "La mia casa mi pesa invece di aiutarmi",
+      "descrizione_breve": "Riprendi il controllo di spazi, tempo e organizzazione domestica.",
+      "sotto_aree": [
+        {
+          "codice": "CAS-01",
+          "slug": "carico-mentale-familiare",
+          "nome": "Carico mentale familiare",
+          "keywords": [
+            "carico mentale",
+            "mental load",
+            "carico mentale domestico",
+            "sono sempre io a pensare a tutto",
+            "gestione mentale della famiglia"
+          ]
+        },
+        {
+          "codice": "CAS-02",
+          "slug": "casa-disordinata-disorganizzazione",
+          "nome": "Casa disordinata e disorganizzazione cronica",
+          "keywords": [
+            "casa disordinata",
+            "disorganizzazione",
+            "casa sempre in disordine",
+            "non riesco a tenere in ordine",
+            "decluttering",
+            "organizzazione casa"
+          ]
+        },
+        {
+          "codice": "CAS-03",
+          "slug": "mancanza-tempo-gestione-domestica",
+          "nome": "Mancanza di tempo per la gestione domestica",
+          "keywords": [
+            "non ho tempo per la casa",
+            "gestione domestica",
+            "poco tempo per le faccende",
+            "organizzazione del tempo casa"
+          ]
+        },
+        {
+          "codice": "CAS-04",
+          "slug": "routine-che-non-funzionano",
+          "nome": "Routine familiari che non funzionano",
+          "keywords": [
+            "routine familiari",
+            "routine che non funzionano",
+            "organizzazione quotidiana",
+            "gestione della giornata"
+          ]
+        },
+        {
+          "codice": "CAS-05",
+          "slug": "spazi-piccoli-poco-funzionali",
+          "nome": "Spazi piccoli e poco funzionali",
+          "keywords": [
+            "casa piccola",
+            "ottimizzare gli spazi",
+            "spazi poco funzionali",
+            "arredare spazi piccoli"
+          ]
+        },
+        {
+          "codice": "CAS-06",
+          "slug": "gestione-figli-organizzazione-familiare",
+          "nome": "Gestione dei figli e organizzazione familiare",
+          "keywords": [
+            "gestione dei figli",
+            "organizzazione familiare",
+            "conciliare lavoro e figli",
+            "gestione bambini"
+          ]
+        },
+        {
+          "codice": "CAS-07",
+          "slug": "rientro-lavoro-riorganizzazione-casa",
+          "nome": "Rientro al lavoro e riorganizzazione della casa",
+          "keywords": [
+            "rientro al lavoro",
+            "riorganizzare la casa dopo maternità",
+            "tornare al lavoro e gestire la casa"
+          ]
+        },
+        {
+          "codice": "CAS-08",
+          "slug": "smart-working-spazio-adeguato",
+          "nome": "Smart working senza spazio adeguato",
+          "keywords": [
+            "smart working",
+            "lavoro da casa senza spazio",
+            "home office",
+            "postazione lavoro casa"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lavoro",
+      "nome": "Lavoro",
+      "hook": "Voglio più controllo e chiarezza",
+      "descrizione_breve": "Trova chiarezza economica e professionale, un passo alla volta.",
+      "sotto_aree": [
+        {
+          "codice": "LAV-01",
+          "slug": "paura-partita-iva",
+          "nome": "Paura e dubbi sulla Partita IVA",
+          "keywords": [
+            "partita iva",
+            "p.iva",
+            "paura della partita iva",
+            "aprire partita iva",
+            "dubbi partita iva",
+            "libera professione"
+          ]
+        },
+        {
+          "codice": "LAV-02",
+          "slug": "gestione-tasse-confusione-fiscale",
+          "nome": "Gestione tasse, scadenze e confusione fiscale",
+          "keywords": [
+            "tasse",
+            "scadenze fiscali",
+            "confusione fiscale",
+            "gestione fiscale",
+            "commercialista",
+            "f24",
+            "regime forfettario"
+          ]
+        },
+        {
+          "codice": "LAV-03",
+          "slug": "rientro-lavoro-dopo-maternita",
+          "nome": "Rientro al lavoro dopo la maternità",
+          "keywords": [
+            "rientro al lavoro dopo maternità",
+            "tornare al lavoro dopo il parto",
+            "congedo maternità lavoro"
+          ]
+        },
+        {
+          "codice": "LAV-04",
+          "slug": "difficolta-valorizzarsi-professionalmente",
+          "nome": "Difficoltà a valorizzarsi professionalmente",
+          "keywords": [
+            "valorizzarsi professionalmente",
+            "non mi sento valorizzata",
+            "stallo di carriera",
+            "autostima professionale"
+          ]
+        },
+        {
+          "codice": "LAV-05",
+          "slug": "desiderio-cambiare-lavoro",
+          "nome": "Desiderio di cambiare lavoro",
+          "keywords": [
+            "cambiare lavoro",
+            "voglio cambiare lavoro",
+            "riorientamento professionale",
+            "nuova carriera"
+          ]
+        },
+        {
+          "codice": "LAV-06",
+          "slug": "organizzazione-lavoro-autonomo",
+          "nome": "Organizzazione del lavoro autonomo",
+          "keywords": [
+            "organizzazione lavoro autonomo",
+            "gestione del tempo freelance",
+            "produttività freelance"
+          ]
+        },
+        {
+          "codice": "LAV-07",
+          "slug": "educazione-finanziaria-base",
+          "nome": "Educazione finanziaria di base",
+          "keywords": [
+            "educazione finanziaria",
+            "gestione dei soldi",
+            "imparare a gestire i risparmi",
+            "finanza personale base"
+          ]
+        },
+        {
+          "codice": "LAV-08",
+          "slug": "pianificazione-economica-investimenti",
+          "nome": "Pianificazione economica e investimenti",
+          "keywords": [
+            "pianificazione economica",
+            "investimenti per donne",
+            "come iniziare a investire",
+            "pianificazione finanziaria"
+          ]
+        }
+      ]
+    }
+  ]
+}
