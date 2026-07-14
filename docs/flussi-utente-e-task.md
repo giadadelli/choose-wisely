@@ -1,10 +1,25 @@
 # Piattaforma Diana — Flussi Utente & Task di Implementazione (MVP)
 
-**Stack**: Vue 3 + Nuxt 4, SSR, mobile-first, accessibile (WCAG 2.1 AA), ottimizzato SEO
+**Stack**: Vue 3 + Nuxt 3, SSR, mobile-first, accessibile (WCAG 2.1 AA), ottimizzato SEO
 **Scope MVP**: solo il flusso Diana (directory pura, nessun self-service professionista)
 **Ultimo aggiornamento**: bozza v2
 
 ---
+
+## 0.0 Stella polare — visione a lungo periodo (non MVP)
+
+**[12/07/2026]** Nota strategica, non vincolante per lo sviluppo MVP: emersa da una discussione sul potenziale della piattaforma, riportata qui perché guidi le decisioni future senza dover essere ridiscussa da zero ogni volta.
+
+**Origine dell'idea**: osservazione diretta dell'algoritmo di Instagram, sia come professionista sia come utente. I contenuti di chi vende un servizio partono quasi sempre dal problema ("ti capita mai che..."), ma l'algoritmo mostra solo ciò che massimizza engagement/spesa pubblicitaria — non ciò di cui l'utente ha davvero bisogno. Una donna può non sapere che esiste una figura specializzata proprio per il suo problema, semplicemente perché quel contenuto non le è mai stato mostrato. Da qui il bisogno di un luogo di **ricerca intenzionale** (io cerco, non l'algoritmo mi propone).
+
+**Visione**: Choose Wisely come il punto di ingresso per le donne che hanno un problema e vogliono risolverlo — l'equivalente di TripAdvisor per chi cerca un ristorante, applicato ai problemi di vita (salute, casa, lavoro). Non un'app di raccomandazione algoritmica, ma un luogo di scoperta per intento.
+
+**Cosa serve, nel tempo, per arrivarci** (esplicitamente fuori scope MVP, riferimento Appendice B):
+- **Catalogo aperto**: superamento del cap-20 Founder curato a mano, con iscrizione self-service dei professionisti (Elodie/Anna)
+- **Recensioni autentiche**: motore di fiducia auto-alimentato stile TripAdvisor. Nodo aperto da risolvere: senza contatto in-app tracciato (che il modello attuale esclude per scelta, vedi A1), non c'è modo nativo di verificare che una recensione venga da chi ha realmente usato il servizio — va deciso consapevolmente come affrontarlo (es. conferma leggera via email) prima di implementare le recensioni
+- **Monetizzazione a canone mensile per i professionisti**, introdotta solo dopo aver dimostrato traffico reale (vedi §2.6) — non subito e non come atto di fede
+
+**Cosa NON è questa visione**: non è un mandato a costruire subito nessuno di questi elementi. Il valore dell'MVP attuale (directory curata, gratuita, zero attrito tecnico) resta la strategia giusta per validare in fretta. La stella polare serve a orientare le decisioni di v2 quando arriverà il momento, non a giustificare scope creep sull'MVP.
 
 ## 0. Assunzioni di lavoro (da validare)
 
@@ -220,6 +235,19 @@ Pagine statiche SSR, contenuto gestito via DB/CMS semplice (stesso principio di 
 
 ---
 
+## 2.6 Monetizzazione futura (nota strategica, non MVP)
+
+**[12/07/2026]** Decisione: in questa fase la piattaforma resta **completamente gratuita**, sia per Diana sia per i Founder. Il canone mensile ai professionisti (v2, Appendice B) non verrà proposto finché non esisteranno dati concreti di traffico da mostrare: senza numeri, chiedere un pagamento richiede al professionista un atto di fiducia cieca; con numeri (sessioni per sotto-area, click verso i contatti), diventa una decisione razionale basata su domanda dimostrata — lo stesso percorso seguito da ProntoPro (3 anni per arrivare a 1 milione di utenti, poi monetizzazione lato professionisti).
+
+Per questo, **il tracciamento va raccolto fin dal lancio dell'MVP**, anche se il pagamento non è nello scope MVP (task SCRUM-67, Epic 6):
+- Sessioni sulle pagine `/area/[slug]`, per capire quali sotto-aree hanno più domanda di ricerca
+- Click-through dai profili verso i contatti diretti (tel:/mailto:/sito esterno) — segnale più forte del semplice traffico, perché indica intenzione reale di contatto
+- Dati aggregati, non individuali: nessuna identificazione della singola utente, coerente con A1 (nessuna registrazione Diana)
+
+**Nota sulla direzione v2** (si veda anche la discussione su recensioni/self-service in Appendice B): il modello di riferimento a lungo termine non è il pay-per-lead di ProntoPro né il canone fisso puro, ma un modello ibrido ispirato a TripAdvisor — recensioni aperte come motore di fiducia auto-alimentato, catalogo professionisti aperto oltre il cap-20 Founder, canone mensile per i professionisti una volta dimostrato il traffico. Le recensioni "autentiche" (come verificarle senza contatto in-app tracciato) restano un problema aperto da risolvere prima di implementarle — vedi discussione in chat del 12/07/2026.
+
+**Chiarimento target professionisti**: i professionisti iscritti (Founder e standard) non sono necessariamente donne — solo le utenti che cercano (Diana) sono donne. Questo vale per tutta la pianificazione futura su onboarding, comunicazione e pricing.
+
 ## 3. Regole di business MVP (ranking e Founder)
 
 1. Ranking di ricerca: Founder sempre in cima (fino a 20), ordinati tra loro per un criterio secondario (es. data inserimento); a seguire i professionisti standard ordinati per rilevanza (es. data inserimento, completezza profilo).
@@ -231,7 +259,7 @@ Pagine statiche SSR, contenuto gestito via DB/CMS semplice (stesso principio di 
 ## 4. Task di implementazione (MVP - solo flusso Diana)
 
 ### Epic 0 - Setup progetto e fondamenta tecniche
-- [ ] Init progetto Nuxt 4 (SSR mode, non SPA/static)
+- [ ] Init progetto Nuxt 3 (SSR mode, non SPA/static)
 - [ ] Configurazione TypeScript, ESLint, Prettier, Stylelint
 - [x] Wireframe mobile-first (homepage, pagina area, profilo professionista, chi siamo, sei un professionista) — realizzati con supporto AI direttamente in questa chat (Visualizer), prima di passare a sviluppo/design definitivo
 - [x] Scelta palette colori (brand identity: colori primari/secondari, stati, contrasti verificati AA) — prerequisito del design system — vedi §0.1
@@ -284,6 +312,7 @@ Necessario perché in MVP non c'è self-service né backoffice: i dati vanno mod
 - [ ] Canonical URL corretti su tutte le pagine; valutare `noindex` per Privacy Policy/Termini di utilizzo
 - [ ] Performance SSR (caching pagine pubbliche, route rules Nuxt dove opportuno)
 - [ ] Ottimizzazione immagini (formati moderni, lazy loading, dimensioni responsive)
+- [ ] **Tracciamento base** (SCRUM-67): sessioni sulle pagine `/area/[slug]` + click-through dai profili verso i contatti diretti (tel:/mailto:/sito esterno). Nessuna autenticazione, dati aggregati non individuali. Vedi §6 "Monetizzazione futura" per il motivo
 
 ### Epic 7 - Accessibilità
 - [ ] Audit WCAG 2.1 AA su homepage, pagina area, profilo, pagine istituzionali
