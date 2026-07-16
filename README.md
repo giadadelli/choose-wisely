@@ -98,3 +98,16 @@ L'hosting scelto è [Vercel](https://vercel.com) (piano free/Hobby). La configur
 5. **Più avanti**, quando il sito sarà pronto per andare live (fuori scope in questo task): aggiornare i DNS di `choosewisely.it` per puntare a Vercel al posto del sito WordPress attuale a cui è collegato oggi.
 
 I punti 1-4 sono necessari perché le preview automatiche sulle PR e il deploy di produzione funzionino; il punto 5 resta rimandato a quando si deciderà di sostituire il sito WordPress esistente.
+
+### Database (Neon) — migrazioni automatiche via GitHub Actions
+
+Le migrazioni (`drizzle-kit migrate`) girano nel workflow [`.github/workflows/db-migrate.yml`](.github/workflows/db-migrate.yml) su push a `main`/`develop`, **non** nella build di Vercel: le variabili `DATABASE_URL`/`DATABASE_URL_UNPOOLED` su Vercel sono marcate Sensitive e vengono iniettate solo a runtime (funzioni serverless), mai durante lo step di build — uno script `vercel-build` con la migrazione dentro fallirebbe sempre per credenziali mancanti, indipendentemente dall'ordine migrate/build.
+
+Passi manuali necessari, nella dashboard GitHub (Settings → Environments del repo):
+
+1. Creare l'Environment `production`, con secret `DATABASE_URL_UNPOOLED` puntato al branch Neon `main`/produzione.
+2. Creare l'Environment `development`, con secret `DATABASE_URL_UNPOOLED` puntato a un branch Neon dedicato a `develop` (non condiviso con production, per lo stesso motivo della nota storica sotto).
+
+> Nota storica: prima di questa configurazione, `db:migrate` andava lanciato a mano in locale contro `.env.local`, che punta sempre allo stesso branch Neon indipendentemente dal branch git su cui si sta lavorando. Questo ha causato una migrazione finita sul branch `main` invece che su `develop`.
+
+Le preview per-PR (branch Neon effimero creato ad hoc, deploy Vercel pilotato da GitHub Actions) sono fuori scope in questo task e restano da implementare in un secondo momento.
