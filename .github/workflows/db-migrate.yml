@@ -10,6 +10,7 @@ on:
       - 'server/db/schema/**'
       - 'drizzle.config.ts'
       - 'package-lock.json'
+  workflow_dispatch:
 
 concurrency:
   group: db-migrate-${{ github.ref_name }}
