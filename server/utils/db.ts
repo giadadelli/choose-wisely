@@ -8,6 +8,9 @@ import * as schema from '../db/schema'
 // nell'ambiente: dotenv non sovrascrive quelle esistenti.
 config({ path: '.env.local' })
 
-const sql = neon(process.env.DATABASE_URL!)
+// Su Vercel l'integrazione Neon inietta la variabile con un prefisso
+// (`choosewiselydb_DATABASE_URL`), non rinominabile dal progetto: fallback
+// necessario perché in locale/CI resta invece il nome piano `DATABASE_URL`.
+const sql = neon(process.env.DATABASE_URL ?? process.env.choosewiselydb_DATABASE_URL!)
 
 export const db = drizzle(sql, { schema })
