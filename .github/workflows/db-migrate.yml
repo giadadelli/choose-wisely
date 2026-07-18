@@ -1,0 +1,39 @@
+name: DB Migrate
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - 'server/db/migrations/**'
+      - 'server/db/schema/**'
+      - 'drizzle.config.ts'
+      - 'package-lock.json'
+  workflow_dispatch:
+
+concurrency:
+  group: db-migrate-${{ github.ref_name }}
+
+jobs:
+  migrate:
+    name: Apply pending migrations
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'main' && 'Production' || 'development' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run migrations
+        run: npx drizzle-kit migrate
+        env:
+          DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED }}
