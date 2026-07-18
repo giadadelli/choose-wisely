@@ -9,6 +9,7 @@ import '@tabler/icons-webfont/dist/tabler-icons.min.css'
   <div class="index-page">
     <AreaSearch />
     <AreaGrid />
+    <TrustTeaser />
   </div>
 </template>
 
