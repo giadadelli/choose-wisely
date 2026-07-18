@@ -105,7 +105,7 @@ Le migrazioni (`drizzle-kit migrate`) girano nel workflow [`.github/workflows/db
 
 Passi manuali necessari, nella dashboard GitHub (Settings → Environments del repo):
 
-1. Creare l'Environment `production`, con secret `DATABASE_URL_UNPOOLED` puntato al branch Neon `main`/produzione.
+1. Environment `Production` (nota la maiuscola: esisteva già, creato dall'integrazione GitHub di Vercel per il tracking dei deployment — il workflow deve fare match esatto, case-sensitive), con secret `DATABASE_URL_UNPOOLED` puntato al branch Neon `main`/produzione.
 2. Creare l'Environment `development`, con secret `DATABASE_URL_UNPOOLED` puntato a un branch Neon dedicato a `develop` (non condiviso con production, per lo stesso motivo della nota storica sotto).
 
 > Nota storica: prima di questa configurazione, `db:migrate` andava lanciato a mano in locale contro `.env.local`, che punta sempre allo stesso branch Neon indipendentemente dal branch git su cui si sta lavorando. Questo ha causato una migrazione finita sul branch `main` invece che su `develop`.
